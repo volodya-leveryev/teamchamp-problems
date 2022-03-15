@@ -1,0 +1,17 @@
+\begin{tutorial}{Система счисления}
+
+Задача решается перебором всех возможных значений $X$. Для проверки на делимость можно использовать схему Горнера и арифметику по модулю $M$. Если полученное число равно нулю то число делится на $M$.
+
+\begin{verbatim}
+def divisible(number, X, M)
+    val = 0
+    for digit in number:
+        val = (val * X) \% M
+        val = (val + digit) \% M
+    if val == 0:
+        return True
+    else:
+        return False
+\end{verbatim}
+
+\end{tutorial}
