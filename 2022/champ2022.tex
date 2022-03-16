@@ -1,0 +1,135 @@
+%! TEX program = xelatex
+\documentclass[a5paper, twoside, 11pt]{article}
+
+\input{preamble-statement.tex}
+\usepackage{lscape,longtable,amsmath,tabularx}
+
+\renewcommand{\olympiad}{XIX Республиканская командная олимпиада школьников \mbox{по программированию}}
+\fancyhead[LE]{XIX Республиканская командная олимпиада школьников}
+\fancyhead[RE]{}
+\fancyhead[RO]{2021--2022 учебный год}
+\fancyhead[LO]{}
+
+\begin{document}
+
+
+\pagestyle{empty}
+
+\begin{flushright}
+\it
+Эффективная и слаженная\\
+командная работа -- залог успеха!
+\end{flushright}
+{}\vskip-15mm
+
+\includegraphics[width=3cm, height=3cm]{logo.pdf}
+\\[3cm]
+
+\begin{center}
+\huge
+XIX РЕСПУБЛИКАНСКАЯ \\КОМАНДНАЯ\\ОЛИМПИАДА ШКОЛЬНИКОВ \\
+ПО~ПРОГРАММИРОВАНИЮ
+\end{center}
+
+\vfill
+\centerline{Якутск}
+\centerline{4--5 марта 2022 г.}
+\newpage
+\noindent XIX Республиканская командная олимпиада школьников по программированию.~--- Якутск, 2022.
+\\[5mm]
+Сборник содержит условия задач XIX Республиканской командной олимпиады школьников по программированию и возможные варианты решений. Олимпиада проводилась дистанционно 
+4--5 марта 2022~г.
+\vfill
+
+{}\hfill © Авторский коллектив, 2022
+
+\newpage
+\noindent
+\textbf{СПОНСОРЫ ОЛИМПИАДЫ}
+\\[7mm]
+\begin{tabular}{@{}p{.44\textwidth}p{.5\textwidth}}
+\raisebox{-4.7ex}{\includegraphics{cts.png}}
+& 
+Генеральный директор \newline
+ГК <<КопирТехСервис>>\newline
+НИКИФОРОВ Александр Тарасович
+\newline\strut
+\\
+\raisebox{-4.7ex}{\includegraphics[width=.43\textwidth]{nefu.pdf}}
+& 
+Преподаватели СВФУ \newline 
+имени М.К.Аммосова \newline
+НИКОЛАЕВА Наталья Васильевна, \newline
+ЛЕВЕРЬЕВ Владимир Семенович
+\newline\strut
+\\
+\raisebox{-4.7ex}{\includegraphics{lena.png}}
+& 
+Руководитель МАУ <<Кинотеатр\newline
+Лена>> ГО <<город Якутск>>\newline
+ЕГОРОВ Алексей Алексеевич
+\end{tabular}
+
+\input{credits}
+
+\newpage
+% \input{teamlist.tex}
+
+\pagestyle{fancy}
+
+\newpage
+\rm
+\thispagestyle{plain}
+\section*{УСЛОВИЯ ЗАДАЧ}
+\addcontentsline{toc}{section}{Условия задач}
+\fancyhead[RO]{Условия задач}
+
+\newcommand{\importproblem}[1]{
+\graphicspath{{problems/#1/statements/russian/}}
+\import{problems/#1/statements/russian/}{problem.tex}	
+}
+
+\importproblem{thereandback}
+\importproblem{xor-from-a-to-b}
+\importproblem{pizza}
+\importproblem{dyyray-army}
+\importproblem{dna}
+\importproblem{pelmeni}
+\importproblem{kihun}
+\importproblem{circles}
+\importproblem{containers}
+\importproblem{fractions}
+
+
+%======================================================================
+\newpage
+\fancyhead[RO]{Решения}
+\section*{РЕШЕНИЯ}
+\addcontentsline{toc}{section}{Решения}
+\setcounter{subsection}{0}
+
+
+\renewcommand{\importproblem}[1]{
+\graphicspath{{problems/#1/statements/russian/}}
+\import{problems/#1/statements/russian/}{tutorial.tex}	
+}
+
+\importproblem{thereandback}
+\importproblem{xor-from-a-to-b}
+\importproblem{pizza}
+\importproblem{dyyray-army}
+\importproblem{dna}
+\importproblem{pelmeni}
+\importproblem{kihun}
+\importproblem{circles}
+\newpage
+\importproblem{containers}
+\importproblem{fractions}
+
+
+\begin{landscape}
+\input{results.tex}
+\end{landscape}
+
+\tableofcontents
+\end{document}
