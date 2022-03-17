@@ -1,0 +1,91 @@
+%! TEX program = xelatex
+\documentclass[a5paper, twoside, 11pt]{article}
+
+\input{preamble-statement.tex}
+
+\renewcommand{\olympiad}{XVI Республиканская командная олимпиада школьников \mbox{по программированию}}
+\fancyhead[LE]{XVI Республиканская командная олимпиада школьников}
+\fancyhead[RE]{}
+\fancyhead[RO]{2018--2019 учебный год}
+\fancyhead[LO]{}
+
+\begin{document}
+
+\pagestyle{empty}
+\begin{flushright}
+\textit
+Эффективная и слаженная\\
+командная работа --- залог успеха!
+\end{flushright}
+{}\vskip-18mm
+
+\includegraphics[width=3cm, height=3cm]{../logo.pdf}
+\\[3cm]
+
+\begin{center}
+\huge
+XVI РЕСПУБЛИКАНСКАЯ \\КОМАНДНАЯ\\ОЛИМПИАДА ШКОЛЬНИКОВ \\
+ПО~ПРОГРАММИРОВАНИЮ
+\end{center}
+
+\vfill
+\centerline{с. Чапаево}
+\centerline{27 февраля -- 3 марта 2019 г.}
+
+\newpage
+
+\noindent XVI Республиканская командная олимпиада школьников по программированию.~--- с. Чапаево, 2019.
+\\[5mm]
+Сборник содержит условия задач XVI Республиканской командной олимпиады школьников по программированию и возможные варианты решений. Олимпиада проводилась 27 февраля--3 марта 2019~г. на базе Малой академии наук РС~(Я) в с.~Чапаево под Якутском. Участникам было предложено за пять часов решить десять задач.
+\vfill
+
+{}\hfill © Авторский коллектив, 2019
+
+\newpage
+\input{credits}
+
+
+\newpage
+
+\noindent
+\pagestyle{fancy}
+
+\input{teamlist}
+
+%=============================================================================
+\newpage
+\rm
+\thispagestyle{plain}
+\section*{УСЛОВИЯ ЗАДАЧ} 
+\fancyhead[RO]{Условия задач}
+
+\importproblem{banner}
+\importproblem{target}
+\importproblem{patchwork}
+\importproblem{comparison}
+\importproblem{one-dim-hectare}
+\importproblem{long-strings}
+\importproblem{kolechki}
+\importproblem{wonderful-numbers}
+\importproblem{taksopark}
+\importproblem{maxim-and-planet-2}
+
+%======================================================================
+\newpage
+\fancyhead[RO]{Решения}
+\section*{РЕШЕНИЯ} 
+\setcounter{subsection}{0}
+
+\importtutorial{banner}
+\importtutorial{target}
+\importtutorial{patchwork}
+\importtutorial{comparison}
+\importtutorial{one-dim-hectare}
+\importtutorial{long-strings}
+\importtutorial{kolechki}
+\importtutorial{wonderful-numbers}
+\importtutorial{taksopark}
+\importtutorial{maxim-and-planet-2}
+
+\includepdf[angle=90, pages=1-3]{results.pdf}
+\end{document}

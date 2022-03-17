@@ -1,0 +1,42 @@
+\begin{tutorial}{Странные числа планеты Фывапро}
+
+Реализуем алгоритм перевода целого числа из 10-й системы счисления в $P$-ичную методом "от младших разрядов к старшим" и параллельно находим значение максимальной цифры и подсчитываем количество ее вхождений. Поскольку данный алгоритм нужно будет выполнить дважды (для каждого числа), имеет смысл оформить его в виде подпрограммы.
+
+Пример программы на языке Паскаль:
+\begin{verbatim}
+var a,b,p: integer;
+    m1,m2,c1,c2: integer;
+    
+procedure count_max(x: integer; var m,c : integer);
+var r: integer;
+begin
+  m:=0; c:=0;
+  while x>0 do
+    begin
+      r:=x mod p;
+      x:=x div p;
+      if r>m then begin m:=r; c:=1 end
+      else
+        if r=m then c:=c+1;
+    end;
+end;
+
+begin
+  readln(a,b);
+  readln(p);
+
+  count_max(a,m1,c1);
+  count_max(b,m2,c2);
+  
+  if m1>m2 then writeln(1)
+  else
+    if m2>m1 then writeln(2)
+    else 
+      if c1>c2 then writeln(1)
+      else
+        if c2>c1 then writeln(2)
+        else writeln(0);
+end.
+\end{verbatim}
+
+\end{tutorial}
