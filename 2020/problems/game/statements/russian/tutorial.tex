@@ -1,0 +1,21 @@
+\begin{tutorial}{Победитель}
+
+Задача на множественное ветвление. Надо проверить условия проверки выигрыша отдельных героев задачи, а иначе вывести <<T>>. Пример решения задачи на языке программирования~С++ приведен ниже:
+\begin{verbatim}
+#include<iostream>
+using namespace std;
+void main(){
+   long long a,d,m;
+   cin >> a >> d >> m;
+   if (a > d && a > m)
+      cout << 'A';
+   else if(d > a && d > m)
+      cout << 'D';
+   else if(m > a && m > d)
+      cout << 'M';
+   else
+      cout << 'T';
+}
+\end{verbatim}
+
+\end{tutorial}
