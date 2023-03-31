@@ -1,0 +1,159 @@
+%! TEX program = xelatex
+\documentclass[a5paper, twoside, 11pt]{article}
+
+\input{preamble-statement.tex}
+\usepackage{lscape,longtable,amsmath,tabularx}
+
+\renewcommand{\olympiad}{XX Республиканская командная олимпиада школьников \mbox{по программированию}}
+\fancyhead[LE]{XX Республиканская командная олимпиада школьников}
+\fancyhead[RE]{}
+\fancyhead[RO]{2022--2023 учебный год}
+\fancyhead[LO]{}
+
+\begin{document}
+
+\pagestyle{empty}
+
+\begin{flushright}
+\it
+Эффективная и слаженная\\
+командная работа --- залог успеха!
+\end{flushright}
+{}\vskip-15mm
+
+\includegraphics[width=3cm, height=3cm]{logo.pdf}
+\\[3cm]
+
+\begin{center}
+\huge
+XX РЕСПУБЛИКАНСКАЯ \\КОМАНДНАЯ\\ОЛИМПИАДА ШКОЛЬНИКОВ \\
+ПО~ПРОГРАММИРОВАНИЮ
+\end{center}
+
+\vfill
+\centerline{Якутск}
+\centerline{4--5 марта 2023 г.}
+\newpage
+\noindent XX Республиканская командная олимпиада школьников по программированию.~--- Якутск, 2023.
+\\[5mm]
+Сборник содержит условия задач XX Республиканской командной олимпиады школьников по~программированию 
+и~возможные варианты решений. Олимпиада проводилась на~базе Малой академии наук РС~(Я) в~с.~Чапаево
+4--5 марта 2023~г. Участникам было предложено за пять часов решить одиннадцать задач. 
+\vfill
+
+{}\hfill © Авторский коллектив, 2023
+
+\newpage
+\noindent
+\textbf{СПОНСОРЫ ОЛИМПИАДЫ}
+\\[17mm]
+\begin{tabular}{@{}p{.44\textwidth}p{.5\textwidth}}
+\raisebox{-4.7ex}{\includegraphics[width=.43\textwidth]{logos/axioma.pdf}}
+& 
+ГЕНЕРАЛЬНЫЙ СПОНСОР\newline
+ООО «Аксиома»\newline
+\textit{директор \newline 
+Наталья Леонтьевна Махонина}
+\newline\strut
+\\
+& \\
+\strut\hspace{8mm}\raisebox{-7.7ex}{\includegraphics[height=.17\textwidth]{logos/Sinet_Spark_Logo_white.pdf}}
+& 
+Благотворительный фонд развития региона «Синет Спарк (ИСКРА)»\newline
+\textit{директор \newline 
+Александра Васильевна Козулина}
+\newline\strut
+\\
+& \\
+\raisebox{-4.7ex}{\includegraphics[width=.43\textwidth]{logos/fntastic.pdf}}
+& 
+ООО «Инновационные решения \newline и технологии – разработка ПО»\newline
+\textit{генеральный директор\newline
+Евдокия Васильевна Старкова}
+\newline\strut
+\\
+& \\
+\raisebox{-7.7ex}{\includegraphics[width=.43\textwidth]{logos/sba.png}}
+& 
+ООО «Саха Бизнес Автоматизация»\newline
+\textit{генеральный директор\newline
+Дмитрий Иванович Авксентьев}
+\newline\strut
+\\
+& \\
+\raisebox{-4.7ex}{\includegraphics[width=.43\textwidth]{logos/copierts.jpg}}
+& 
+ООО «КопирТехСервис»\newline
+\textit{генеральный директор\newline
+Александр Тарасович Никифоров}
+\newline\strut
+\end{tabular}
+
+\input{credits}
+
+\newpage
+
+\noindent\textbf{УЧАСТНИКИ ОЛИМПИАДЫ}
+
+\input{teamlist.tex}
+
+\pagestyle{fancy}
+
+\newpage
+\rm
+\thispagestyle{plain}
+\section*{УСЛОВИЯ ЗАДАЧ}
+\addcontentsline{toc}{section}{Условия задач}
+\fancyhead[RO]{Условия задач}
+
+\newcommand{\importproblem}[1]{
+\graphicspath{{problems/#1/statements/russian/}}
+\import{problems/#1/statements/russian/}{problem.tex}	
+}
+
+\importproblem{prizes}
+\importproblem{idiocracy}
+\importproblem{robot-gardener}
+\importproblem{simple-game}
+\importproblem{rectangle-coloring}
+\importproblem{foodshop-2}
+\importproblem{interview-at-fun-club}
+\importproblem{relay-race-with-weight}
+\importproblem{suburban-grasshoppers}
+\importproblem{pills}
+\importproblem{debt-evasion}
+
+
+%======================================================================
+\newpage
+\fancyhead[RO]{Решения}
+\section*{РЕШЕНИЯ}
+\addcontentsline{toc}{section}{Решения}
+\setcounter{subsection}{0}
+
+
+\renewcommand{\importproblem}[1]{
+\graphicspath{{problems/#1/statements/russian/}}
+\import{problems/#1/statements/russian/}{tutorial.tex}	
+}
+
+\importproblem{prizes}
+\importproblem{idiocracy}
+\importproblem{robot-gardener}
+\importproblem{simple-game}
+\importproblem{rectangle-coloring}
+\newpage
+\importproblem{foodshop-2}
+\importproblem{interview-at-fun-club}
+\importproblem{relay-race-with-weight}
+\importproblem{suburban-grasshoppers}
+\importproblem{pills}
+\importproblem{debt-evasion}
+
+\begin{landscape}
+\input{results.tex}
+\end{landscape}
+
+\pagestyle{empty}
+\tableofcontents
+\end{document}
