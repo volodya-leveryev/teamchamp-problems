@@ -1,65 +1,105 @@
 %! TEX program = xelatex
-\documentclass[a5paper, twoside, 11pt]{article}
+\documentclass[a5paper, twoside, 11pt, openany]{book}
 
 \input{preamble-statement.tex}
 \usepackage{lscape,longtable,amsmath,tabularx}
 
-\renewcommand{\olympiad}{XX Республиканская командная олимпиада школьников \mbox{по программированию}}
-\fancyhead[LE]{XX Республиканская командная олимпиада школьников}
-\fancyhead[RE]{}
-\fancyhead[RO]{2022--2023 учебный год}
-\fancyhead[LO]{}
-
 \begin{document}
+\hfuzz=1.5pt
 
 \pagestyle{empty}
 
-\begin{flushright}
-\smash{\raisebox{-25mm}{\includegraphics[width=3cm, height=3cm]{logo.pdf}}}
-\hfill
-\it
+\textit{\small\hfill
 Эффективная и слаженная\\
+\strut\hfill
 командная работа --- залог успеха!
-\end{flushright}
-\vskip5cm
+}
 
+\vskip15mm
 \begin{center}
-\huge
-XX РЕСПУБЛИКАНСКАЯ \\КОМАНДНАЯ\\ОЛИМПИАДА ШКОЛЬНИКОВ \\
-ПО~ПРОГРАММИРОВАНИЮ
+\includegraphics[width=3cm, height=3cm]{logo.pdf}
+
+\vskip3mm
+\LARGE
+XX РЕСПУБЛИКАНСКАЯ КОМАНДНАЯ\\ОЛИМПИАДА ШКОЛЬНИКОВ \\
+ПО~ПРОГРАММИРОВАНИЮ\\
+\hrulefill
+\\[4mm]
+РЕСПУБЛИКАНСКИЙ КОМАНДНЫЙ\\ЧЕМПИОНАТ ПО ПРОГРАММИРОВАНИЮ\\
+СРЕДИ УЧИТЕЛЕЙ ИНФОРМАТИКИ
+
+\vskip5mm
+\includegraphics[width=3cm, height=3cm]{logo_teachers.pdf}
+
 \end{center}
 
 \vfill
 \centerline{Якутск}
 \centerline{3--4 марта 2023 г.}
+% ==================================================================================================
+
 \newpage
-\noindent XX Республиканская командная олимпиада школьников по программированию.~--- Якутск, 2023.
+\noindent 
+XX Республиканская командная олимпиада школьников по программированию. 
+XX~Республиканский командный чемпионат по~программированию среди учителей~--- 
+Якутск, 2023.
 \\[5mm]
 Сборник содержит условия задач XX Республиканской командной олимпиады школьников по~программированию 
-и~возможные варианты решений. Олимпиада проводилась на~базе Малой академии наук РС~(Я) в~с.~Чапаево
-3--4 марта 2023~г. Участникам было предложено за пять часов решить одиннадцать задач.
+и~XX~Республиканского командного чемпионата по~программированию среди учителей информатики,
+а~также возможные варианты решений. Мероприятия проводились на~базе Малой академии наук РС~(Я) 
+в~с.~Чапаево 3--4 марта 2023~г. Школьникам было предложено за пять часов решить 11 задач,
+учителям~--- 8~задач.
 \vfill
+\noindent\centerline{\it Верстка А.\,В.~Павлова}
+\vfill
+\begin{flushright}
+© Авторский коллектив, 2023
+\end{flushright}
 
-{}\hfill © Авторский коллектив, 2023
-
-\input{sponsors}
-
-\input{credits}
-
-\input{teamlist.tex}
-
-\pagestyle{fancy}
+% ==================================================================================================
 
 \newpage
-\rm
+\input{sponsors}
+
+% ==================================================================================================
+
+\newpage
+\refstepcounter{chapter}
+\chapter*{XX РЕСПУБЛИКАНСКАЯ КОМАНДНАЯ ОЛИМПИАДА ШКОЛЬНИКОВ ПО~ПРОГРАММИРОВАНИЮ}
+\addcontentsline{toc}{chapter}{XX Республиканская командная олимпиада школьников по~программированию}
+\thispagestyle{empty}
+
+% ==================================================================================================
+
+\pagestyle{fancy}
+\fancyfoot{}
+\fancyhead[RE]{XX Республиканская командная олимпиада школьников}
+\fancyhead[LE]{\thepage}
+\fancyhead[LO]{\rightmark}
+\fancyhead[RO]{\thepage}
+
+\newpage
+\input{orgcom}
+
+% ==================================================================================================
+
+\newpage
+\input{jury}
+
+% ==================================================================================================
+
+\newpage
+\input{teamlist.tex}
+
+% ==================================================================================================
+
+\newpage
+\section[Условия задач]{УСЛОВИЯ ЗАДАЧ}
 \thispagestyle{plain}
-\section*{УСЛОВИЯ ЗАДАЧ}
-\addcontentsline{toc}{section}{Условия задач}
-\fancyhead[RO]{Условия задач}
 
 \newcommand{\importproblem}[1]{
-\graphicspath{{problems/#1/statements/russian/}}
-\import{problems/#1/statements/russian/}{problem.tex}	
+\graphicspath{{problems/students/#1/statements/russian/}}
+\import{problems/students/#1/statements/russian/}{problem.tex}	
 }
 
 \importproblem{prizes}
@@ -74,17 +114,15 @@ XX РЕСПУБЛИКАНСКАЯ \\КОМАНДНАЯ\\ОЛИМПИАДА ШК�
 \importproblem{pills}
 \importproblem{debt-evasion}
 
-
 %======================================================================
+
 \newpage
-\fancyhead[RO]{Решения}
-\section*{РЕШЕНИЯ}
-\addcontentsline{toc}{section}{Решения}
-\setcounter{subsection}{0}
+\section[Решения]{РЕШЕНИЯ}
+\thispagestyle{plain}
 
 \renewcommand{\importproblem}[1]{
-\graphicspath{{problems/#1/statements/russian/}}
-\import{problems/#1/statements/russian/}{tutorial.tex}	
+\graphicspath{{problems/students/#1/statements/russian/}}
+\import{problems/students/#1/statements/russian/}{tutorial.tex}	
 }
 
 \importproblem{prizes}
@@ -92,7 +130,6 @@ XX РЕСПУБЛИКАНСКАЯ \\КОМАНДНАЯ\\ОЛИМПИАДА ШК�
 \importproblem{robot-gardener}
 \importproblem{simple-game}
 \importproblem{rectangle-coloring}
-\newpage
 \importproblem{foodshop-2}
 \importproblem{interview-at-fun-club}
 \importproblem{relay-race-with-weight}
@@ -104,6 +141,63 @@ XX РЕСПУБЛИКАНСКАЯ \\КОМАНДНАЯ\\ОЛИМПИАДА ШК�
 \input{results.tex}
 \end{landscape}
 
+%======================================================================
+
+\newpage
+\fancyhead[RE]{XX Республиканский командный чемпионат среди учителей}
+\refstepcounter{chapter}
+\chapter*{XX РЕСПУБЛИКАНСКИЙ КОМАНДНЫЙ ЧЕМПИОНАТ ПО~ПРОГРАММИРОВАНИЮ СРЕДИ УЧИТЕЛЕЙ}
+\addcontentsline{toc}{chapter}{XX Республиканский командный чемпионат по~программированию среди учителей}
+\thispagestyle{empty}
+
+%======================================================================
+
+\newpage
+\section[Условия задач]{УСЛОВИЯ ЗАДАЧ}
+\thispagestyle{plain}
+
+\renewcommand{\importproblem}[1]{
+\graphicspath{{problems/teachers/#1/statements/russian/}}
+\import{problems/teachers/#1/statements/russian/}{problem.tex}	
+}
+
+\importproblem{pills}
+\importproblem{naruto-jumping}
+\importproblem{robot-gardener}
+\importproblem{fishermen}
+\importproblem{set}
+\importproblem{interview-at-fun-club}
+\importproblem{wolves}
+\importproblem{straight-way}
+
+%======================================================================
+
+\newpage
+\section[Решения]{РЕШЕНИЯ}
+\thispagestyle{plain}
+
+\renewcommand{\importproblem}[1]{
+\graphicspath{{problems/teachers/#1/statements/russian/}}
+\import{problems/teachers/#1/statements/russian/}{tutorial.tex}	
+}
+
+\importproblem{pills}
+\importproblem{naruto-jumping}
+\importproblem{robot-gardener}
+\importproblem{fishermen}
+\importproblem{set}
+\importproblem{interview-at-fun-club}
+\importproblem{wolves}
+\importproblem{straight-way}
+
+\begin{landscape}
+  \input{results_teachers.tex}
+\end{landscape}
+  
+
 \pagestyle{empty}
+\renewcommand{\contentsname}{Содержание}
+\sloppy
+\thispagestyle{empty}
 \tableofcontents
 \end{document}

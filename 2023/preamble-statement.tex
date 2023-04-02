@@ -1,9 +1,57 @@
-\usepackage{enumitem, amsmath, amssymb, tikz, fancyhdr, stackengine, graphicx, sectsty, pdfpages, hyperref}
+% Change numbering to be at subsections but not higher up (not sections, chapters)
+% This needs to be done before hyperref
+\makeatletter
+\def\@sect#1#2#3#4#5#6[#7]#8{%
+  \refstepcounter{#1}%
+  \ifnum #2<\c@secnumdepth
+    \let\@svsec\@empty
+  \else
+    \protected@edef\@svsec{\@seccntformat{#1}\relax}%
+  \fi
+  \@tempskipa #5\relax
+  \ifdim \@tempskipa>\z@
+    \begingroup
+      #6{%
+        \@hangfrom{\hskip #3\relax\@svsec}%
+          \interlinepenalty \@M #8\@@par}%
+    \endgroup
+    \csname #1mark\endcsname{#7}%
+    \addcontentsline{toc}{#1}{%
+      \ifnum #2<\c@secnumdepth \else
+        \protect\numberline{\csname the#1\endcsname}%
+      \fi
+      #7}%
+  \else
+    \def\@svsechd{%
+      #6{\hskip #3\relax
+      \@svsec #8}%
+      \csname #1mark\endcsname{#7}%
+      \addcontentsline{toc}{#1}{%
+        \ifnum #2<\c@secnumdepth \else
+          \protect\numberline{\csname the#1\endcsname}%
+        \fi
+        #7}}%
+  \fi
+  \@xsect{#5}}
 
-\usepackage[top=18mm, inner=10mm, outer=9mm, bottom=17mm, headheight=14.5pt, headsep=3mm, footskip=7mm]{geometry}
+\def\@makechapterhead#1{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \raggedright \normalfont
+    \interlinepenalty\@M
+    \Huge \sffamily\bfseries #1\par\nobreak
+    \vskip 40\p@
+}}
+
+\@addtoreset{subsection}{section}
+\makeatother
+
+\usepackage{enumitem, amsmath, amssymb, tikz, fancyhdr, stackengine, graphicx, pdfpages, hyperref, microtype}
+\renewcommand{\sectionmark}[1]{\markright{#1}{}}
+
+\usepackage[top=18mm, inner=9mm, outer=10mm, bottom=17mm, headheight=14.5pt, headsep=3mm, footskip=7mm]{geometry}
 
     \usepackage[english, russian]{babel}    %% загружает пакет многоязыковой вёрстки
-    \usepackage{fontspec}                  %% подготавливает загрузку шрифтов 
+    \usepackage{fontspec}                   %% подготавливает загрузку шрифтов 
     \defaultfontfeatures[\rmfamily, \sffamily]{Ligatures={TeX}}  %% свойства шрифтов по умолчанию
     % \setmainfont[Scale=.9, BoldFont={[PTF75F.ttf]}, BoldItalicFont={[PTF76F.ttf]}, ItalicFont={[PTF56F.ttf]}, Ligatures={TeX,Historic}]{[PTF55F.ttf]} %% задаёт основной шрифт документа
     \setmainfont{PT Serif}
@@ -22,8 +70,6 @@
     \setmathfont[range="2264-"2265]{PT Serif}
     \setmathfont[range="003C-"003E]{PT Serif}
 	
-    \allsectionsfont{\sffamily}
-
     \usepackage{verbatim}
     \usepackage{import}
 
@@ -45,6 +91,7 @@
     \makeatletter
     \def\kw@Explanation{Пояснение к примеру}
     \def\kw@Explanations{Пояснения к примерам}
+    \makeatother
     
     % заголовки разделов и~столбцов таблицы примеров
     \newcommand{\problempartheading}[1]{\par\medskip\noindent\textbf{\sffamily #1}\par\penalty10000\noindent}    
@@ -59,8 +106,7 @@
     \newcommand{\Explanation}{\problempartheading{\kw@Explanation}}
     \newcommand{\Explanations}{\problempartheading{\kw@Explanations}}
 
-
-	% русские знаки нестрогих неравенств
+	  % русские знаки нестрогих неравенств
     \renewcommand{\geq}{\geqslant}
     \renewcommand{\leq}{\leqslant}
     \renewcommand{\ge}{\geq}
@@ -69,17 +115,17 @@
     % штрафы за разрыв строки по оператору
     \binoppenalty=10000
     \relpenalty=10000
-    
-    \makeatletter
+
     % задача = \begin{problem}{name}{in}{out}{TL}{ML}
-    \newenvironment{problem}[5]{%
-\subsection{#1}%
-\renewcommand{\InputFileName}{#2}%
-\renewcommand{\OutputFileName}{#3}%
+    \newenvironment{problem}[6][\unskip]{%
+\subsection[#2 \emph{#1}]{#2 ~~{\mdseries\itshape #1}}%
+\renewcommand{\InputFileName}{#3}%
+\renewcommand{\OutputFileName}{#4}%
 }{}
     \newenvironment{tutorial}[1]{\subsection{#1}}{}
     \renewcommand{\thesubsection}{\Alph{subsection}.}
-    \renewcommand{\thesection}{}
+
+    \makeatletter
 
     % ширина таблицы примеров - по умолчанию равна ширине текста минус 2 красных строки
     \newlength{\ex@mpwidth}
@@ -91,6 +137,8 @@
     \newlength{\ex@mpinpwidth}
     \newlength{\ex@mpoutwidth}
     \newlength{\ex@mpcomwidth}
+
+    \makeatother
 
 % -- Setup sizes --
 \newlength{\thelinewidth}
@@ -120,6 +168,7 @@
 % :FIXME:
 
 % This is magic, which delete space after verbatiminput
+\makeatletter
 \addto@hook{\every@verbatim}{\topsep=0pt\relax}
 
 \def\s@tm@cr@s{
@@ -161,110 +210,43 @@
 }
 
     
-    % таблица примеров с 3 колонками (ввод, вывод, комментарий), три аргумента - доли колонок 
-        \newenvironment{examplecommented}[3]{
-        \setlength{\ex@mpinpwidth}{#1\ex@mpwidth}
-        \setlength{\ex@mpoutwidth}{#2\ex@mpwidth}
-        \setlength{\ex@mpcomwidth}{#3\ex@mpwidth}
-        \newcommand{\exmp}[3]{\begin{minipage}[t]{\ex@mpinpwidth}\raggedright\ttfamily ##1\medskip\end{minipage} &
-                              \begin{minipage}[t]{\ex@mpoutwidth}\raggedright\ttfamily ##2\medskip\end{minipage} &
-                              \begin{minipage}[t]{\ex@mpcomwidth} ##3\medskip\end{minipage}\\\hline%
-        }
-        \obeylines\obeyspaces\frenchspacing
-
-        \noindent\begin{tabular}{|l|l|l|}
-        \hline\multicolumn{1}{|c|}{\bf\texttt{\InputFileName}}&\multicolumn{1}{c|}{\bf\texttt{\OutputFileName}}&
-        \multicolumn{1}{c|}{\bf\texttt{\commentsname}}\\
-        \hline
-        }{\end{tabular}\smallskip}
+% таблица примеров с 3 колонками (ввод, вывод, комментарий), три аргумента - доли колонок 
+\newenvironment{examplecommented}[3]{
+\setlength{\ex@mpinpwidth}{#1\ex@mpwidth}
+\setlength{\ex@mpoutwidth}{#2\ex@mpwidth}
+\setlength{\ex@mpcomwidth}{#3\ex@mpwidth}
+\newcommand{\exmp}[3]{\begin{minipage}[t]{\ex@mpinpwidth}\raggedright\ttfamily ##1\medskip\end{minipage} &
+                      \begin{minipage}[t]{\ex@mpoutwidth}\raggedright\ttfamily ##2\medskip\end{minipage} &
+                      \begin{minipage}[t]{\ex@mpcomwidth} ##3\medskip\end{minipage}\\\hline%
+}
+\obeylines\obeyspaces\frenchspacing
+\par\noindent\begin{tabular}{|l|l|l|}
+\hline\multicolumn{1}{|c|}{\bf\texttt{\InputFileName}}&\multicolumn{1}{c|}{\bf\texttt{\OutputFileName}}&
+\multicolumn{1}{c|}{\bf\texttt{\commentsname}}\\
+\hline
+}{\end{tabular}\smallskip}
 
     
     % таблица примеров в~1 колонку. Один пример верстается в~4 строки (считая заголовки) на всю ширину таблицы
-        \newenvironment{examplewide}{
-        \advance\ex@mpwidth2\tabcolsep 
-        \ttfamily\obeylines\obeyspaces\frenchspacing
-        \newcommand{\exmp}[2]{
-            \begin{tabular}{|c|}
-            \hline
-            \multicolumn{1}{|c|}{\bf\texttt{\InputFileName}}\\
-            \hline
-            \begin{minipage}[t]{\ex@mpwidth}\rightskip=0pt plus 1fill\relax\raggedright ##1 \medskip\end{minipage}\\
-            \hline
-            \multicolumn{1}{|c|}{\bf\texttt{\OutputFileName}}\\
-            \hline
-            \begin{minipage}[t]{\ex@mpwidth}\rightskip=0pt plus 1fill\relax\raggedright ##2 \medskip\end{minipage}\\%
-            \hline
-            \end{tabular}\smallskip
-        }
-        }{}
-
-   \makeatother
-
-	% колонтитулы
-    \pagestyle{fancy}
-    \makeatletter
-    \fancyhead[LE]{\small \@title }
-    \makeatother
-    \fancyhead[RE]{}
-    \fancyhead[LO]{2016--2017 учебный год}
-    \fancyhead[RO]{}
-    
-    \newcommand\olympiad{*** ОПРЕДЕЛИТЕ ОЛИМПИАДУ КОМАНДОЙ \textbackslash olympiad !!! ***}
-
-    
-    \AtBeginDocument{\sloppy}
-    \newcommand*{\hm}[1]{#1\nobreak\discretionary{}%
-{\hbox{$\mathsurround=0pt #1$}}{}}
-
-
-\newcommand{\foreword}{
-\noindent\centerline{\parbox{0.9\textwidth}{\centering\sloppy\textbf{\olympiad}}}
-
-\medskip
-\noindent\centerline{\textbf{Дорогие участники!}}
-\medskip
-
-Проверка ваших решений производится \emph{автоматически} на наборе тестов, учитывающем различные варианты исходных данных, чтобы система могла выставить наиболее объективную оценку.
-
-Для каждого теста выполняется следующая процедура:
-\smallskip
-\begin{itemize}[nolistsep]
-\item
-Система создает входной файл с исходными данными теста.
-\item 
-Запускается ваша программа, которая должна прочитать этот файл и~записать ответ в выходной файл.
-\item
-Затем система проверяет созданный вашей программой файл и~выносит решение о его правильности. 
-\end{itemize}
-
-Именно поэтому ваша программа должна читать данные из файла, а не с клавиатуры, и вывод записывать тоже в файл. Ни в коем случае нельзя использовать ввод с клавиатуры (например, функцию \texttt{readkey} в Паскале), так как в этом случае ваша программа будет ждать ввода бесконечно (и будет снята с тестирования после превышения лимита времени). Также важно строго соблюдать формат выходного файла. 
-
-Приведем простой способ чтения из файла и записи в файл на языке Паскаль:\\
-\framebox{\parbox{\textwidth}{
-\small\tt
-\{ {\rm\textit{ в начале программы }}\/ \}\\
-assign(input, 'taskname.in');  reset(input);\\
-assign(output, 'taskname.out'); rewrite(output);\\
-\{ {\rm\textit{ теперь обычные процедуры read, readln, write, writeln будут работать \\ с файлами, а не с клавиатурой / экраном}} \}\\
-  …\\
-\{ {\rm\textit{ в конце программы }}\/ \}\\
-close(output);
-}}
-
-\bigskip
-\noindent
-Ко всем задачам предъявляются следующие технические требования:
-
-\noindent\addstackgap[8pt]{
-\begin{tabular}{@{}ll}
-Имена входного и выходного файлов & \textbf{см. в примерах к~задаче}\\
-Максимальное время работы на одном тесте & 1 секунда\\
-Максимальный объем используемой памяти	& 256 мегабайт \\
-\end{tabular}
+\newenvironment{examplewide}{
+\advance\ex@mpwidth2\tabcolsep 
+\ttfamily\obeylines\obeyspaces\frenchspacing
+\newcommand{\exmp}[2]{
+    \begin{tabular}{|c|}
+    \hline
+    \multicolumn{1}{|c|}{\bf\texttt{\InputFileName}}\\
+    \hline
+    \begin{minipage}[t]{\ex@mpwidth}\rightskip=0pt plus 1fill\relax\raggedright ##1 \medskip\end{minipage}\\
+    \hline
+    \multicolumn{1}{|c|}{\bf\texttt{\OutputFileName}}\\
+    \hline
+    \begin{minipage}[t]{\ex@mpwidth}\rightskip=0pt plus 1fill\relax\raggedright ##2 \medskip\end{minipage}\\%
+    \hline
+    \end{tabular}\smallskip
 }
+}{}
 
+\usepackage{etoolbox}
+\patchcmd{\tableofcontents}{\@starttoc{toc}}{\thispagestyle{empty}\pagestyle{empty}\@starttoc{toc}}{}{}
 
-\begin{center}
-\textbf{Желаем удачи!}
-\end{center}
-}
+\makeatother
