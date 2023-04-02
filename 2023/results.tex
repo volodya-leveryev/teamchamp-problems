@@ -6,24 +6,25 @@
 
 % \begin{document}
 % \pagestyle{empty}
+%
+% \newcommand{\ptim}[2]{$\underset{\mbox{\sffamily\scriptsize #2}}{\mbox{#1}}$}
 \sffamily
 \pagestyle{empty}
-\addcontentsline{toc}{section}{Итоги олимпиады}
 \setlength{\tabcolsep}{.7mm}
-{\centering\large
-\textbf{ПРОТОКОЛ}\\
-\normalsize
-XX Республиканская командная олимпиада школьников по программированию\\
-}
+\sectionfont{\nohang\centering\sffamily}
+\section*{ПРОТОКОЛ}
+\addcontentsline{toc}{section}{Итоги олимпиады}
+\vskip-3mm
+\centerline{XX Республиканская командная олимпиада школьников по программированию}
 \fontsize{10pt}{12pt}\selectfont\par\noindent
-\newcommand{\ptim}[2]{$\underset{\mbox{\sffamily\scriptsize #2}}{\mbox{#1}}$}
 \begin{longtable}{
 |r|
 >{\raggedright\arraybackslash}m{40mm}|
 *{11}{>{\centering\arraybackslash}m{7mm}|}
 >{\centering\arraybackslash\bfseries\sffamily}m{7mm}|
 >{\raggedleft\small}m{9.5mm}|
->{\centering\arraybackslash\small}m{12mm}|}
+>{\centering\arraybackslash\small}m{12mm}|
+}
 \hline
 № & Команда & A & B & C & D & E & F & G & H & I & J & K & = & {\small Время} & Диплом
 \tabularnewline
