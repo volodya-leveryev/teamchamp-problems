@@ -1,0 +1,16 @@
+\begin{tikzpicture}
+
+\definecolor{navy}{RGB}{0, 0, 128}
+
+\node[thick, draw, minimum size=5cm, regular polygon, regular polygon sides=10, navy, rotate=36] (a) {};
+\node[thick, draw, minimum size=5cm, regular polygon, regular polygon sides=5, rotate=18] {};
+
+\newcounter{vertex}
+
+\foreach \x in {10,9,...,1}{
+  \fill (a.corner \x) circle[radius=1.5pt];
+  \stepcounter{vertex}
+  \fill[red] (a.corner \x) circle[color=red, radius=2pt] node[black, shift={(\x*360/10+35:0.4)}] {\textit{\Alph{vertex}}};
+}
+
+\end{tikzpicture}
