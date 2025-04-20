@@ -1,8 +1,11 @@
-%!TEX program = xelatex
-%!TEX encoding = UTF-8 Unicode
+% !TeX root = champ2025.tex
+% !TEX program = xelatex
+% !TEX encoding = UTF-8 Unicode
 \documentclass[a5paper, twoside, 11pt]{article}
 
 \input{preamble.tex}
+
+\newcommand{\man}{ГАНОУ РЦ РС\,(Я) «Малая академия наук РС\,(Я)»}
 
 \renewcommand{\olympiad}{XXII Республиканская командная олимпиада школьников \mbox{по программированию}}
 
@@ -38,31 +41,10 @@ XXII РЕСПУБЛИКАНСКАЯ\\КОМАНДНАЯ\\ОЛИМПИАДА ШК
 \vfill
 \hfill © Авторский коллектив, 2025
 
-\newpage
-\noindent
-\textbf{СПОНСОРЫ ОЛИМПИАДЫ}
-\\[7mm]
-\begin{tabular}{ @{} p{.44\textwidth} p{.5\textwidth} }
-  \raisebox{-5ex}{\includegraphics[width=.43\textwidth]{figures/axioma.pdf}}
-  & 
-  ГЕНЕРАЛЬНЫЙ СПОНСОР\newline
-  ООО «Аксиома»\newline
-  \textit{директор \newline 
-  Наталья Леонтьевна Махонина}
-  \newline\strut
-\\
-  \raisebox{-4.7ex}{\includegraphics{figures/cts.png}}
-  & 
-  ГК <<КопирТехСервис>>\newline
-  \textit{Генеральный директор \newline
-  Александр Тарасович Никифоров}
-  \newline\strut
-% \\
-\end{tabular}
+\input{sponsors}
 
 \input{credits}
 
-\newpage
 \input{teamlist.tex}
 
 % \pagestyle{fancy}
