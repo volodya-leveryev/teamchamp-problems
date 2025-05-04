@@ -151,27 +151,34 @@
 
 \newenvironment{example}[1][]{
   \s@tm@cr@s#1
-  \ttfamily\obeylines\obeyspaces\frenchspacing
+  \ttfamily % моноширинный шрифт
+  \small % маленький шрифт
+  \obeylines
+  \obeyspaces
+  \frenchspacing % отключаем отступы между абзацами
+
+  % Пример
   \newcommand{\exmp}[2]{
-      \begin{minipage}[t]{\exmpwidinf}\rightskip=0pt plus 1fill\relax##1\medskip\end{minipage}&
-      \begin{minipage}[t]{\exmpwidouf}\rightskip=0pt plus 1fill\relax##2\medskip\end{minipage}\\
-      \hline
+    \begin{minipage}[t]{\exmpwidinf}\rightskip=0pt plus 1fill\relax##1\medskip\end{minipage}&
+    \begin{minipage}[t]{\exmpwidouf}\rightskip=0pt plus 1fill\relax##2\medskip\end{minipage}\\
+    \hline
   }
 
+  % Пример который берет данные из файлов
   \newcommand{\exmpfile}[2]{
     \exmp{
-        \verbatiminput{##1}
+      \verbatiminput{##1}
     }{
-        \verbatiminput{##2}
+      \verbatiminput{##2}
     }%
   }
 
-
+  % Заголовок таблицы примеров с именами файлов
   \begin{tabular}{|l|l|}
-      \hline
-      \multicolumn{1}{|c|}{\bf\texttt{\InputFileName}}&
-      \multicolumn{1}{|c|}{\bf\texttt{\OutputFileName}}\\
-      \hline
+    \hline
+    \multicolumn{1}{|c|}{\bf\texttt{\InputFileName}}&
+    \multicolumn{1}{|c|}{\bf\texttt{\OutputFileName}}\\
+    \hline
 }{
   \end{tabular}
 }

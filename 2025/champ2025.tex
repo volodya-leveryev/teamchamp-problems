@@ -47,26 +47,37 @@ XXII РЕСПУБЛИКАНСКАЯ\\КОМАНДНАЯ\\ОЛИМПИАДА ШК
 
 \input{teamlist.tex}
 
-% \pagestyle{fancy}
+\pagestyle{fancy}
 
-% \newpage
-% \rm
-% \thispagestyle{plain}
-% \section*{УСЛОВИЯ ЗАДАЧ}
-% \addcontentsline{toc}{section}{Условия задач}
-% \fancyhead[RO]{Условия задач}
+\newpage
+\rm
+\thispagestyle{plain}
+\section*{УСЛОВИЯ ЗАДАЧ}
+\addcontentsline{toc}{section}{Условия задач}
+\fancyhead[RO]{Условия задач}
 
-% \newcommand{\importproblem}[1]{
-%   \graphicspath{{problems/#1/statements/russian/}} %
-%   \import{problems/#1/statements/russian/}{problem.tex} %
-% }
+\newcommand{\importproblem}[1]{
+  \graphicspath{{problems/#1/statements/russian/}} %
+  \import{problems/#1/}{problem.tex} %
+}
 
 % Контесты в Полигоне:
 % [РКОШП-2025](https://polygon.codeforces.com/contest?contestId=49262)
 % [РКЧПУ-2025](https://polygon.codeforces.com/contest?contestId=49263)
 % [Все задачи](https://polygon.codeforces.com/contest?contestId=47811)
 
-% \importproblem{thereandback}
+\importproblem{a-we-love-trees}
+\importproblem{b-reverse-concatenation}
+\importproblem{c-brackets}
+\importproblem{d-caverna}
+\importproblem{e-wheel-in-a-graph}
+\importproblem{f-grind-time}
+\importproblem{g-competition}
+\importproblem{h-primes-addition}
+\importproblem{i-chips-3-n}
+\importproblem{j-gcd-eucledean-game}
+\importproblem{k-same-digit-sum-min}
+\importproblem{l-timur-loves-cakes}
 
 %======================================================================
 % \newpage
@@ -87,5 +98,5 @@ XXII РЕСПУБЛИКАНСКАЯ\\КОМАНДНАЯ\\ОЛИМПИАДА ШК
 % \input{results.tex}
 % \end{landscape}
 
-% \tableofcontents
+\tableofcontents
 \end{document}
