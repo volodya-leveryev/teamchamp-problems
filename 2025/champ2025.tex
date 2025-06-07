@@ -80,23 +80,36 @@ XXII РЕСПУБЛИКАНСКАЯ\\КОМАНДНАЯ\\ОЛИМПИАДА ШК
 \importproblem{l-timur-loves-cakes}
 
 %======================================================================
-% \newpage
-% \fancyhead[RO]{Решения}
-% \section*{РЕШЕНИЯ}
-% \addcontentsline{toc}{section}{Решения}
-% \setcounter{subsection}{0}
+\newpage
+\section*{РЕШЕНИЯ}
+\addcontentsline{toc}{section}{Решения}
+\fancyhead[RO]{Решения}
+\setcounter{subsection}{0}
 
-% \renewcommand{\importproblem}[1]{
-%   \graphicspath{{problems/#1/statements/russian/}} %
-%   \import{problems/#1/statements/russian/}{tutorial.tex} %
-% }
+\renewcommand{\importproblem}[1]{
+  \graphicspath{{problems/#1/}} %
+  \import{problems/#1/}{tutorial.tex} %
+}
 
-% \importproblem{thereandback}
+\importproblem{a-we-love-trees}
+\importproblem{b-reverse-concatenation}
+\importproblem{c-brackets}
+\importproblem{d-caverna}
+\importproblem{e-wheel-in-a-graph}
+\importproblem{f-grind-time}
+\importproblem{g-competition}
+\importproblem{h-primes-addition}
+\importproblem{i-chips-3-n}
+\importproblem{j-gcd-eucledean-game}
+\importproblem{k-same-digit-sum-min}
+\importproblem{l-timur-loves-cakes}
 
 % Результаты
+% TODO
 % \begin{landscape}
 % \input{results.tex}
 % \end{landscape}
 
+\newpage
 \tableofcontents
 \end{document}

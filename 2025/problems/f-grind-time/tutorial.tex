@@ -26,7 +26,7 @@ c \cdot \frac{\left( \left\lfloor \frac{m}{n} \right\rfloor - 1 \right) \cdot \l
 \left( a_0 + a_1 + ... + a_{n-1} \right) \cdot \left\lfloor \frac{m}{n} \right\rfloor + a_0 + a_1 + ... + a_{m \bmod{n}} + c \cdot \frac{\left( \left\lfloor \frac{m}{n} \right\rfloor - 1 \right) \cdot \left\lfloor \frac{m}{n} \right\rfloor}{2} \leq k %\tag{3}
 \end{equation}
 
-Пусть $k' = k - \left( 1 \right)$, а $b = \frac{\left( \left\lfloor \frac{m}{n} \right\rfloor - 1 \right) \cdot \left\lfloor \frac{m}{n} \right\rfloor}{2}$. Вычтем с обеих частей (1):
+Пусть $k' = k - \left( 1 \right)$, а $\displaystyle b = \frac{\left( \left\lfloor \frac{m}{n} \right\rfloor - 1 \right) \cdot \left\lfloor \frac{m}{n} \right\rfloor}{2}$. Вычтем из обеих частей (1):
 
 \begin{equation}
 c \cdot b \leq k' %\tag{4}
@@ -38,7 +38,7 @@ c \cdot b \leq k' %\tag{4}
 c \leq \frac{k'}{b} %\tag{5}
 \end{equation}
 
-Наконец, найдём ответ. Если Коля не сможет пройти все локации хотя бы 2 раза, то ответом является $1000000000$, поскольку от количество требуемой энергии не зависит от $c$. В противном случае ответом является:
+Наконец, найдём ответ. Если Коля не сможет пройти все локации хотя бы 2 раза, то ответом является $1\,000\,000\,000$, поскольку от количество требуемой энергии не зависит от $c$. В противном случае ответом является:
 
 \begin{equation}
 c = \left\lfloor \frac{k'}{b} \right\rfloor %\tag{6}
