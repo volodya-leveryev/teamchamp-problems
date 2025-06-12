@@ -230,7 +230,7 @@
 \fancyhead[LO]{2024--2025 учебный год}
 \fancyhead[RO]{}
 
-\newcommand\olympiad{*** ОПРЕДЕЛИТЕ ОЛИМПИАДУ КОМАНДОЙ \textbackslash olympiad !!! ***}
+\newcommand{\olympiad}{XXII Республиканская командная олимпиада школьников по программированию}
 
 \AtBeginDocument{\sloppy}
 \newcommand*{\hm}[1]{
@@ -289,3 +289,14 @@ close(output);
 \textbf{Желаем удачи!}
 \end{center}
 }
+
+% Метаданные PDF-файла
+\usepackage[
+%   pdftex,
+%   pdfauthor={Your Name},
+  pdftitle={\olympiad},
+  % pdfsubject={The Subject},
+  % pdfkeywords={Some Keywords},
+  % pdfproducer={Latex with hyperref, or other system},
+  % pdfcreator={pdflatex, or other tool}
+]{hyperref}
